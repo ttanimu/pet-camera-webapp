@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while :
+do
+	event=`inotifywait /home/pet/public_html/pet.jpg -e move_self --format '%T' --timefmt '%Y%m%d%H%M%S' 2> /dev/null`
+	mkdir -p /home/pet/public_html/old/
+	chmod 777 /home/pet/public_html/old/
+	cp -f /home/pet/public_html/pet.odl /home/pet/public_html/old/$event.jpg
+	chmod 777 /home/pet/public_html/pet/$event.jpg
+	chown pet:pet /home/pet/public_html/pet/$event.jpg
+done
+

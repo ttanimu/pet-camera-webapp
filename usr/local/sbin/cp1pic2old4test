@@ -1,0 +1,4 @@
+#!/bin/bash
+event=`inotifywait /home/pet/public_html/pet.jpg -e open --format '%T' --timefmt '%Y%m%d%H%M%S' 2> /dev/null`
+echo /pet/$event.jpg
+
